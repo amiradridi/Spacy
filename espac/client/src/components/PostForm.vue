@@ -6,7 +6,7 @@
       height="1170"
       width="900"
     >
-      <v-form ref="form" v-model="valid" lazy-validation class="forminside">
+      <v-form ref="form" v-model="valid" lazy-validation class="forminside" enctype="multipart/form-data">
         <v-row>
           <v-col>
             <v-label><h3>Titre :</h3></v-label>
@@ -42,13 +42,13 @@
         ></v-row>
         <v-row
           ><v-col>
-            <v-file-input
-              class="fileinput"
-              @change="onImageSelected"
+            <input
+              type="file"
+              name="images"
+              v-on:change="onImageSelected"
               label="File input"
-              filled
-              prepend-icon="mdi-camera"
-            ></v-file-input> </v-col
+              required
+            /> </v-col
         ></v-row>
         <v-row>
           <v-col>
@@ -164,7 +164,7 @@ export default {
       titre: "",
       description: "",
       type: "",
-      image: null,
+      images: null,
       prix: "",
       adress: "",
       ville: "",
@@ -192,33 +192,35 @@ export default {
   },
   methods: {
     onImageSelected(event) {
-      this.image = event.target.files[0];
+      this.images = event.target.files[0];
+      console.log(this.images);
     },
     async validate() {
       this.$refs.form.validate();
       if (this.valid) {
+        console.log("debut");
         this.loading = true;
         try {
+          console.log("ye");
           const fd = new FormData();
-          fd.append("image", this.image, this.image.name);
-          let resp = await authController.signIn({
-            titre: this.titre,
-            type: this.type,
-            description: this.description,
-            image: fd,
-            prix: this.prix,
-            adress: this.adress,
-            ville: this.ville,
-            datedebut: this.datedebut,
-            datefin: this.datefin
-          });
+          fd.append("images", this.images);
+          fd.append("title", this.titre);
+          fd.append("type", this.type);
+          fd.append("description", this.description);
+          fd.append("prix", this.prix);
+          fd.append("adresse", this.adress);
+          fd.append("ville", this.ville);
+          fd.append("date_debut", this.datedebut);
+          fd.append("date_fin", this.datefin);
+          console.log(fd);
+          let resp = await authController.test();
           console.log(resp);
           this.$router.replace({ name: "Home" });
-          this.loginUser(resp.data);
           this.loading = false;
         } catch (e) {
           this.loading = false;
           this.error = e.response.data.err;
+          console.log(e.response.data.err);
         }
       } else {
         //to implement notification v-if here

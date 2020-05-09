@@ -81,7 +81,7 @@ UserSchema.methods.generateJwt = function(){
     let payload = {
         id : this._id,
         email: this.email,
-        username: this.username,
+        telephone: this.telephone,
         firstname: this.firstname,
         lastname : this.lastname
     }

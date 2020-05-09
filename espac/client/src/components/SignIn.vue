@@ -89,7 +89,7 @@ export default {
       if (this.valid) {
         this.loading = true;
         try {
-          let resp = await authController.signIn({
+          let resp = await authController.login({
             email: this.email,
             password: this.mdp
           });
