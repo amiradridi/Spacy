@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.post('/register', [
   check('email').isEmail().withMessage('Enter a valid email address'),
   check('password').not().isEmpty().isLength({min: 6}).withMessage('Must be at least 6 chars long'),
-  check('username').not().isEmpty().withMessage('You username is required'),
+  check('telephone').not().isEmpty().isLength({ min: 8, max:8 }).withMessage('The telephone number field is empty or not equal to 8 digits'),
   check('firstname').not().isEmpty().withMessage('You first name is required'),
   check('lastname').not().isEmpty().withMessage('You last name is required')
 ], validate, User.register);
