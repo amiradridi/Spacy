@@ -1,0 +1,30 @@
+<template>
+  <div>
+    <v-app class="pr-0">
+      <Header />
+      <v-content class="pr-0">
+        <!-- the actual page that the router shows-->
+        <router-view />
+      </v-content>
+      <Footer />
+    </v-app>
+  </div>
+</template>
+<script>
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+    Footer
+  },
+  data: () => ({
+    //
+  })
+};
+</script>
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Cairo|Tajawal&display=swap");
+</style>
