@@ -13,10 +13,10 @@ const UserSchema = new mongoose.Schema({
         trim:true,
     },
 
-    username: {
-        type : String ,
+    telephone: {
+        type : Number,
         unique: true,
-        required:'Your usernmae is required !',
+        required:'Your num tel is required !',
 
     },
 

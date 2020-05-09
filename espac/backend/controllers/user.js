@@ -5,7 +5,6 @@ const {sendEmail} = require('../utils/index');
 exports.register = async (req , res , next) => {
    
    try{
-       console.log(req.body);
         const {email} = req.body;
         const user = await User.findOne({email});
         if (user) return res.status(401).json({message: 'The email address you have entered is already associated with another account.'});
