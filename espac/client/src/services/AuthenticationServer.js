@@ -7,11 +7,8 @@ export default {
   login(credentials) {
     return Api().post("/users/login", credentials);
   },
-  ajoutEspace(credentials) {
-    return Api().post("/post/register", credentials);
-  },
   test() {
-    return Api().get("/post/test");
+    return Api().get("/users/test");
   }
 };
 

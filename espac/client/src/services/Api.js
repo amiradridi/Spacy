@@ -15,7 +15,7 @@ export default () => {
       // if you ever get an unauthorized, logout the user
       window.localStorage.clear();
       store.state.currentUser = undefined;
-      router.replace({ name: "SignInPage" });
+      router.replace({ name: "Home" });
       // redirect to login !
     } else {
       return Promise.reject(err);
