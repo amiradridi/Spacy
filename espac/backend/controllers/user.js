@@ -45,9 +45,9 @@ exports.login = async function(req,res){
         if (!user) return res.status(401).json({msg: 'The email address ' + email + ' is not associated with any account. Double-check your email address and try again.'});
         if (!user.comparePassword(password)) return res.status(401).json({message: 'Invalid email or password'});
         if (!user.isVerified) return res.status(401).json({ type: 'not-verified', message: 'Your account has not been verified.' });
-        res.status(200).json({ token: user.generateJwt()});
+        res.status(200).json({ token: user.generateJwt() , user : user});
     }catch(err){
-        res.status(500).json({error : err.message });
+        res.status(500).json({error : err.message  });
     }
 }
 

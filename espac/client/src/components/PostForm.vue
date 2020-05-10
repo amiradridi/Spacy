@@ -198,10 +198,8 @@ export default {
     async validate() {
       this.$refs.form.validate();
       if (this.valid) {
-        console.log("debut");
         this.loading = true;
         try {
-          console.log("ye");
           const fd = new FormData();
           fd.append("images", this.images);
           fd.append("title", this.titre);
@@ -212,9 +210,7 @@ export default {
           fd.append("ville", this.ville);
           fd.append("date_debut", this.datedebut);
           fd.append("date_fin", this.datefin);
-          console.log(fd);
-          let resp = await postController.ajoutEspace(fd);
-          console.log(resp);
+          await postController.ajoutEspace(fd);
           this.$router.replace({ name: "Home" });
           this.loading = false;
         } catch (e) {

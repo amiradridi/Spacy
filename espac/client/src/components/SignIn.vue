@@ -96,10 +96,10 @@ export default {
             password: this.mdp
           });
           console.log(resp.data)
-          console.log(this.$store.state.currentUser);
           this.pressLogin(false);
           this.$router.replace({ name: "Home" });
           this.loginUser(resp.data);
+          console.log(this.$store.state.currentUser);
           this.loading = false;
         } catch (e) {
           this.loading = false;
