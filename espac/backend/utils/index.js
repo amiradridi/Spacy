@@ -1,6 +1,9 @@
 const sgMail = require('@sendgrid/mail');
+const nodemailer = require("nodemailer");
+
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 function sendEmail(mailOptions) {
     return new Promise((resolve, reject) => {
@@ -11,4 +14,9 @@ function sendEmail(mailOptions) {
     });
 }
 
-module.exports = {sendEmail} ;
+
+
+
+
+
+module.exports = {sendEmail } ;
