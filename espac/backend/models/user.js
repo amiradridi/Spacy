@@ -13,10 +13,10 @@ const UserSchema = new mongoose.Schema({
         trim:true,
     },
 
-    username: {
-        type : String ,
+    telephone: {
+        type : Number,
         unique: true,
-        required:'Your usernmae is required !',
+        required:'Your num tel is required !',
 
     },
 
@@ -81,7 +81,7 @@ UserSchema.methods.generateJwt = function(){
     let payload = {
         id : this._id,
         email: this.email,
-        username: this.username,
+        telephone: this.telephone,
         firstname: this.firstname,
         lastname : this.lastname
     }

@@ -9,6 +9,7 @@ const passport = require("passport");
 var cors = require('cors');
 
 var usersRouter = require('./routes/auth');
+var postRouter = require('./routes/post');
 
 mongoose.connect(process.env.MongoURL ,{ useNewUrlParser: true ,useUnifiedTopology: true } )
 .then(() => {
@@ -37,11 +38,13 @@ app.use(passport.initialize());
 require("./middlewares/jwt")(passport);
 
 app.use('/users', usersRouter);
+app.use('/post', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

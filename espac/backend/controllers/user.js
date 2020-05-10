@@ -5,7 +5,6 @@ const {sendEmail} = require('../utils/index');
 exports.register = async (req , res , next) => {
    
    try{
-       console.log(req.body);
         const {email} = req.body;
         const user = await User.findOne({email});
         if (user) return res.status(401).json({message: 'The email address you have entered is already associated with another account.'});
@@ -46,9 +45,9 @@ exports.login = async function(req,res){
         if (!user) return res.status(401).json({msg: 'The email address ' + email + ' is not associated with any account. Double-check your email address and try again.'});
         if (!user.comparePassword(password)) return res.status(401).json({message: 'Invalid email or password'});
         if (!user.isVerified) return res.status(401).json({ type: 'not-verified', message: 'Your account has not been verified.' });
-        res.status(200).json({ token: user.generateJwt()});
+        res.status(200).json({ token: user.generateJwt() , user : user});
     }catch(err){
-        res.status(500).json({error : err.message });
+        res.status(500).json({error : err.message  });
     }
 }
 
@@ -61,7 +60,6 @@ async function verificationEmail(user , req ,res){
         let subject = "Account Verification";
         let to = user.email;
         let from = process.env.FROM_EMAIL;
-        console.log(from);
         let link="http://"+req.headers.host+"/users/verify/"+token.token;
         let html = `<p>Hi ${user.username}<p><br><p>Please click on the following <a href="${link}">link</a> to verify your account.</p> 
                     <br><p>If you did not request this, please ignore this email.</p>`;

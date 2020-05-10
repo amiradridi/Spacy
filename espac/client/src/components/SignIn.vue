@@ -68,6 +68,7 @@
 
 <script>
 import authController from "../services/AuthenticationServer";
+import { mapActions } from "vuex";
 export default {
   name: "SignIn",
   data: () => ({
@@ -84,18 +85,21 @@ export default {
   }),
 
   methods: {
+    ...mapActions(["pressLogin", "loginUser"]),
     async validate() {
       this.$refs.form.validate();
       if (this.valid) {
         this.loading = true;
         try {
-          let resp = await authController.signIn({
+          let resp = await authController.login({
             email: this.email,
             password: this.mdp
           });
-          console.log(resp);
+          console.log(resp.data)
+          this.pressLogin(false);
           this.$router.replace({ name: "Home" });
           this.loginUser(resp.data);
+          console.log(this.$store.state.currentUser);
           this.loading = false;
         } catch (e) {
           this.loading = false;

@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('ispace:server');
 var http = require('http');
-var https = require('https');
+ /* var https = require('https'); */
 var fs = require('fs');
 
 /**
@@ -16,31 +16,33 @@ var fs = require('fs');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-app.set('secPort',port+443);
+/* app.set('secPort',port+443); */
 
 /**
  * Create HTTP server.
  */
-var options={
+/* var options={
   key: fs.readFileSync(__dirname+'/private.key'),
   cert: fs.readFileSync(__dirname+'/certificate.pem')
-}
+} */
 
 var server = http.createServer(app);
-var secureServer = https.createServer(options,app);
+ /* var secureServer = https.createServer(options,app); */
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {
+  console.log('Server listening on port 3000 ');
+});
 server.on('error', onError);
 server.on('listening', onListening);
-secureServer.listen(app.get('secPort'),() => {
+/* secureServer.listen(app.get('secPort'),() => {
   console.log('Server listening on port ', app.get('secPort'));
 })
 secureServer.on('error',onError);
-secureServer.on('listening',onListening);
+secureServer.on('listening',onListening); */
 
 /**
  * Normalize a port into a number, string, or false.

@@ -19,18 +19,40 @@
           <v-tab to="Catalogue" class="font-weight-medium" style="color:black"
             >Catalogue Espaces</v-tab
           >
-          <v-tab to="PostFormPage" class="font-weight-medium" style="color:black"
+          <v-tab
+            to="PostFormPage"
+            class="font-weight-medium"
+            style="color:black"
             >Ajout d'espace</v-tab
           >
-          <v-tab to="UserDashboard" class="font-weight-medium" style="color:black"
+          <v-tab
+            to="UserDashboard"
+            class="font-weight-medium"
+            style="color:black"
             >Qui sommes nous</v-tab
           >
           <v-spacer></v-spacer>
-          <v-tab to="SignInPage" class="font-weight-medium" style="color:black"
+          <v-tab
+            to="SignInPage"
+            class="font-weight-medium"
+            style="color:black"
+            v-if="this.$store.state.currentUser === undefined"
             >S'inscrire</v-tab
           >
-          <v-tab to="SignUpPage" class="font-weight-medium" style="color:black"
+          <v-tab
+            to="SignUpPage"
+            class="font-weight-medium"
+            style="color:black"
+            v-if="this.$store.state.currentUser === undefined"
             >S'identifier</v-tab
+          >
+          <v-tab
+            to="SignUpPage"
+            class="font-weight-medium"
+            style="color:black"
+            @click="logOut"
+            v-if="this.$store.state.currentUser !== undefined"
+            >log out</v-tab
           >
           <v-tabs-slider color="#009688"></v-tabs-slider>
         </v-tabs>
@@ -78,10 +100,26 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   name: "Header",
   data() {
     return {};
+  },
+  computed: {
+    ...mapState(["isLoginPressed"])
+  },
+  methods: {
+    ...mapActions(["pressLogin"]),
+    logOut() {
+      this.storage.clear();
+      this.$router.replace({ name: "Home" });
+      this.$router.go();
+    }
+  },
+  mounted() {
+    this.storage = window.localStorage;
+
   }
 };
 </script>

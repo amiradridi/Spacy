@@ -18,14 +18,14 @@
                 required
               ></v-text-field>
               <v-text-field
-                v-model="prénom"
-                :rules="prénomRules"
+                v-model="prenom"
+                :rules="prenomRules"
                 label="Prénom"
                 color="#009688"
                 required
               ></v-text-field>
               <v-text-field
-                v-model="username"
+                v-model="telephone"
                 :counter="8"
                 :rules="telephoneRules"
                 label="Téléphone"
@@ -98,11 +98,9 @@ export default {
       compare: "les 2 mots de passe doivent etre similaires",
       valid: false,
       nom: "",
-      prénom: "",
-      username: "",
+      prenom: "",
       nomRules: [v => !!v || "le nom est demandé"],
-      prénomRules: [v => !!v || "le prénom est demandé"],
-      userRules: [v => !!v || "username est demandé"],
+      prenomRules: [v => !!v || "le prénom est demandé"],
       telephone: "",
       telephoneRules: [
         v => !!v || "Numéro de téléphone est demandé",
@@ -122,7 +120,7 @@ export default {
       confirmdp: "",
       mdpRules: [v => !!v || "le mot de passe est demandé"],
       confirmmdpRules: [v => !!v || "vous devez confirmer mot de passe"],
-      error:""
+      error: ""
     };
   },
 
@@ -134,16 +132,18 @@ export default {
         try {
           let resp = await authController.register({
             firstname: this.nom,
-            lastname: this.prénom,
-            username: this.username,
+            lastname: this.prenom,
+            telephone: this.telephone,
             email: this.email,
             password: this.mdp
           });
           this.loading = false;
+          console.log(resp);
           this.$router.replace({ name: "SignInPage" });
           console.log(resp);
         } catch (e) {
           this.loading = false;
+          console.log(e.response.body)
           console.log(e.response.data);
           this.error = e.response.data.err;
         }
