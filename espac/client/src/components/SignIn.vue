@@ -94,6 +94,7 @@ export default {
             password: this.mdp
           });
           console.log(resp);
+          this.pressLogin(false);
           this.$router.replace({ name: "Home" });
           this.loginUser(resp.data);
           this.loading = false;

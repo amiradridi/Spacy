@@ -153,7 +153,7 @@
 </template>
 
 <script>
-import authController from "../services/AuthenticationServer";
+import postController from "../services/PostServer";
 
 export default {
   name: "PostForm",
@@ -213,7 +213,7 @@ export default {
           fd.append("date_debut", this.datedebut);
           fd.append("date_fin", this.datefin);
           console.log(fd);
-          let resp = await authController.test();
+          let resp = await postController.test();
           console.log(resp);
           this.$router.replace({ name: "Home" });
           this.loading = false;
