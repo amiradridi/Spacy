@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
         }
         const post = new Post({...req.body,creator:req.user._id,images:imagePaths});
         let poste = await post.save();
-        res.status(200).json({"id":poste.images});
+        res.status(200).json(poste);
     }catch(err){
         res.status(400).json(err.message);
     }

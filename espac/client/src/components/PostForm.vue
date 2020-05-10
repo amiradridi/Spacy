@@ -213,7 +213,7 @@ export default {
           fd.append("date_debut", this.datedebut);
           fd.append("date_fin", this.datefin);
           console.log(fd);
-          let resp = await postController.test();
+          let resp = await postController.ajoutEspace(fd);
           console.log(resp);
           this.$router.replace({ name: "Home" });
           this.loading = false;
