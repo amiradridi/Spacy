@@ -1,4 +1,4 @@
-![ESPA logo](https://github.com/amiradridi/Espa/blob/master/logo.png)
+![ESPA logo](https://github.com/amiradridi/Espa/blob/master/avecSlogan.png)
 
 ## Description
   ### WHY?
