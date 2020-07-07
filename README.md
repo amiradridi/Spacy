@@ -19,3 +19,10 @@
   * NodeJs
   * expressJs
   * MongoDB
+
+## Team
+
+
+| <a href="https://github.com/amiradridi" target="_blank">**Amira Dridi**</a> | <a href="http://fvcproductions.com" target="_blank">**Marwen Guesmi**</a> | <a href="https://github.com/ouerf-man" target="_blank">**Raed Ouerfelli**</a> |
+| :---: |:---:| :---:|
+| [![Amira Dridi](https://avatars3.githubusercontent.com/u/24782374?v=3&s=200)](https://github.com/amiradridi)    | [![Marwen Guesmi]()]( | [![Raed Ouerfelli](https://avatars1.githubusercontent.com/u/38401226?v=3&s=200)](https://github.com/ouerf-man)  
