@@ -9,7 +9,7 @@
             alt="Espac"
             class="shrink mr-1"
             contain
-            src="../assets/logo.png"
+            src="../assets/logoSpacy.png"
             transition="scale-transition"
             width="70"
           />
