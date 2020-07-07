@@ -1,22 +1,34 @@
 <template>
   <div class="background">
     <v-row justify="center">
-      <v-col cols="12" md="6" >
-        <UserCard />
+      <v-col cols="4" md="3">
+        <FounderCard />
       </v-col>
-      <v-col cols="12" md="6" >
-        <UserCard />
+      <v-col cols="4" md="3">
+        <FoundingCard />
+      </v-col>
+      <v-col cols="4" md="3">
+        <UserCard/>
       </v-col>
     </v-row>
   </div>
 </template>
 <script>
 import UserCard from "../components/UserCard";
+import FounderCard from "../components/FounderCard";
+import FoundingCard from "../components/FoundingCard";
 
 export default {
   name: "UserDashboard",
+  data: () => ({
+    name1: "Amira Dridi",
+    name2: "Marwen Guesmi",
+    name3: "Raed Ouerfelli"
+  }),
   components: {
-    UserCard
+    UserCard,
+    FounderCard,
+    FoundingCard
   }
 };
 </script>

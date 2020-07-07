@@ -10,20 +10,20 @@
         <v-list-item-avatar color="grey"></v-list-item-avatar>
         <v-list-item-content>
           <v-list-item-title class="headline" style="color: #009688"
-            >Raed Ouerfelli</v-list-item-title
+            >Marwen Guesmi</v-list-item-title
           >
           <v-list-item-subtitle>Etudiant en 3ème génie logiciel</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
-      <v-img src="../assets/Raed Ouerfelli.png" height="300"></v-img>
+      <v-img src="../assets/Marwen Guesmi.png" height="300"></v-img>
     </v-card>
   </v-hover>
 </template>
 
 <script>
 export default {
-  name: "UserCard",
+  name: "FoundingCard",
   data: () => ({
 
   }),
